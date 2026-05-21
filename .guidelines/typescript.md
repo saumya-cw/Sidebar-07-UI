@@ -1,0 +1,33 @@
+---
+name: typescript
+description: Best practices and coding guidelines for TypeScript
+---
+
+Checklist Items:
+
+- Annotate empty arrays: `const items: string[] = []`.
+- Annotate variables initialized to `null` or `undefined`.
+- Avoid `any`; use `unknown` for truly unknown types, and validate them at runtime.
+- Use `as const` for literal types, compile time constants, and configuration objects/arrays to preserve literal types and enable TypeScript to catch key mismatches.
+- Prefer `unknown` over `any` in generic constraints.
+- Avoid type assertions (`as`); prefer type guards. (if you really need it, provide explanation)
+- Never use `as any` to silence errors; fix the types (tests are exceptions).
+- Document why type assertions are needed with comments.
+- Follow strict compiler behaviors regardless of project TSConfig:
+  - `strict: true`
+  - `noImplicitAny`
+  - `strictNullChecks`
+  - `noImplicitReturns`
+  - `noFallthroughCasesInSwitch`
+  - `noUncheckedIndexedAccess`
+  - `exactOptionalPropertyTypes`
+- Use optional chaining (`?.`) for safe property access.
+- Avoid non-null assertion (`!`) unless absolutely certain; document why when used (tests are exceptions).
+- Handle `null` and `undefined` at boundaries (APIs, user input).
+- Co-locate types with their implementation.
+- Document complex types with JSDoc.
+- Use `type` or `interface` consistently within a codebase.
+- Use discriminated unions with a common property for type narrowing when it fits.
+- Avoid `@ts-ignore`; use `@ts-expect-error` with a proper explanation.
+- Don’t trust 3rd party data; validate at runtime and type it at boundaries.
+- Keep types as simple as possible and easy to understand.
