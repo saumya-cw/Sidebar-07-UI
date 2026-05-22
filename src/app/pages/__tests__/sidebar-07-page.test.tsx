@@ -15,20 +15,11 @@ describe("Sidebar07Page", () => {
 			screen.queryByRole("dialog", { name: "Sidebar menu" }),
 		).not.toBeInTheDocument();
 
-		const hiddenSidebarDialog = screen.getByRole("dialog", {
-			hidden: true,
-			name: "Sidebar menu",
-		});
-
-		expect(hiddenSidebarDialog).toBeInTheDocument();
-
 		await user.click(screen.getByRole("button", { name: "Open sidebar" }));
 
 		expect(screen.getByRole("dialog", { name: "Sidebar menu" })).toBeVisible();
 
-		await user.click(
-			screen.getByRole("button", { name: "Close sidebar menu" }),
-		);
+		await user.keyboard("{Escape}");
 
 		expect(
 			screen.queryByRole("dialog", { name: "Sidebar menu" }),

@@ -1,5 +1,6 @@
 import * as Collapsible from "@radix-ui/react-collapsible";
 import { ChevronRight } from "lucide-react";
+import { cn } from "../../../shared/lib";
 import { useSidebar, useSidebarPanelMode } from "../context";
 import type { PrimaryNavigationGroup } from "../data/sidebar-navigation-data";
 import { primaryNavigationGroups } from "../data/sidebar-navigation-data";
@@ -43,7 +44,7 @@ function PrimaryGroupRow({
 	const triggerButton = (
 		<SidebarRowButton
 			aria-label={group.title}
-			className={isCollapsed ? "group justify-center px-0" : "group"}
+			className={cn("group", isCollapsed ? "justify-center px-0" : null)}
 		>
 			<span className="inline-flex items-center gap-2">
 				<group.icon className="size-4 text-sidebar-foreground" />

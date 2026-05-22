@@ -5,11 +5,23 @@ export function DashboardPreview() {
 				aria-label="Dashboard content preview"
 				className="rounded-xl border border-border bg-background p-5"
 			>
-				<header className="mb-6 h-6 w-44 rounded bg-muted-foreground/15" />
+				<span
+					aria-hidden="true"
+					className="mb-6 block h-6 w-44 rounded bg-muted-foreground/15"
+				/>
 				<section className="space-y-3">
-					<p className="h-4 w-full rounded bg-muted" />
-					<p className="h-4 w-[88%] rounded bg-muted" />
-					<p className="h-4 w-[72%] rounded bg-muted" />
+					<span
+						aria-hidden="true"
+						className="block h-4 w-full rounded bg-muted"
+					/>
+					<span
+						aria-hidden="true"
+						className="block h-4 w-11/12 rounded bg-muted"
+					/>
+					<span
+						aria-hidden="true"
+						className="block h-4 w-3/4 rounded bg-muted"
+					/>
 				</section>
 			</section>
 		</article>

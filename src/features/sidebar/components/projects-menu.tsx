@@ -1,5 +1,6 @@
 import { Folder, Forward, MoreHorizontal, Trash2 } from "lucide-react";
 import { Button } from "../../../shared/components/ui";
+import { cn } from "../../../shared/lib";
 import { useSidebar, useSidebarPanelMode } from "../context";
 import { projectNavigationItems } from "../data/sidebar-navigation-data";
 import {
@@ -45,7 +46,12 @@ export function ProjectsMenu() {
 										<Button
 											aria-haspopup="menu"
 											aria-label={`${projectItem.title} actions`}
-											className={`inline-flex size-8 shrink-0 items-center justify-center rounded-md text-muted-foreground transition-opacity hover:bg-sidebar-accent focus:opacity-100 focus:outline-none focus-visible:opacity-100 data-[state=open]:opacity-100 ${isMobile ? "opacity-100" : "opacity-0 group-focus-within:opacity-100 group-hover:opacity-100"}`}
+											className={cn(
+												"inline-flex size-8 shrink-0 items-center justify-center rounded-md text-muted-foreground transition-opacity hover:bg-sidebar-accent focus:opacity-100 focus:outline-none focus-visible:opacity-100 data-[state=open]:opacity-100",
+												isMobile
+													? "opacity-100"
+													: "opacity-0 group-focus-within:opacity-100 group-hover:opacity-100",
+											)}
 											data-sidebar-focusable="true"
 											size="icon"
 											tabIndex={0}

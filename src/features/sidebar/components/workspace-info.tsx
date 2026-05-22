@@ -1,6 +1,7 @@
 import { Check, ChevronsUpDown } from "lucide-react";
 import { useState } from "react";
 import { Button } from "../../../shared/components/ui";
+import { cn } from "../../../shared/lib";
 import { useSidebar, useSidebarPanelMode } from "../context";
 import { workspaceMenu, workspaces } from "../data/sidebar-navigation-data";
 import {
@@ -29,11 +30,7 @@ function WorkspaceMenuContent({
 		<MenuPortal>
 			<MenuContentPanel
 				align="start"
-				className={
-					isMobile
-						? "w-[min(calc(100vw-1.5rem),var(--radix-dropdown-menu-trigger-width))] min-w-56"
-						: "w-[var(--radix-dropdown-menu-trigger-width)] min-w-56"
-				}
+				className="w-72 min-w-56"
 				collisionPadding={8}
 				side={isMobile ? "bottom" : "right"}
 				sideOffset={isMobile ? 4 : 6}
@@ -94,7 +91,10 @@ export function WorkspaceInfo() {
 						aria-expanded={isWorkspaceMenuOpen}
 						aria-haspopup="menu"
 						aria-label="Open workspace options"
-						className={`inline-flex h-12 w-full items-center rounded-lg text-left text-sidebar-foreground ${isCollapsed ? "justify-center px-0" : "justify-between px-2"}`}
+						className={cn(
+							"inline-flex h-12 w-full items-center rounded-lg text-left text-sidebar-foreground",
+							isCollapsed ? "justify-center px-0" : "justify-between px-2",
+						)}
 						data-sidebar-focusable="true"
 						tabIndex={0}
 						variant="ghost"

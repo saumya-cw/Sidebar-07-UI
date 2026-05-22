@@ -3,9 +3,10 @@ import {
 	MobileSidebarDrawer,
 	SidebarPanel,
 	SidebarProvider,
+	SidebarShellHeader,
+	SidebarShellLayout,
 	useSidebar,
 } from "../../features/sidebar/components";
-import { SidebarShellHeader, SidebarShellLayout } from "./components";
 
 function Sidebar07PageContent() {
 	const { isDesktopCollapsed, isMobileSidebarOpen, closeMobileSidebar } =

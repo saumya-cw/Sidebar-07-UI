@@ -1,6 +1,6 @@
 import { PanelLeft } from "lucide-react";
-import { useSidebar } from "../../../features/sidebar/components";
-import { Button } from "../../../shared/components/ui";
+import { Button } from "../../../../shared/components/ui";
+import { useSidebar } from "../../context";
 
 export function SidebarShellHeader() {
 	const { openMobileSidebar, toggleDesktopSidebar } = useSidebar();

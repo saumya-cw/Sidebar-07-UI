@@ -7,6 +7,7 @@ import {
 	Sparkles,
 } from "lucide-react";
 import { Button } from "../../../shared/components/ui";
+import { cn } from "../../../shared/lib";
 import { useSidebar, useSidebarPanelMode } from "../context";
 import { sidebarUser } from "../data/sidebar-navigation-data";
 import {
@@ -31,7 +32,10 @@ export function UserInfo() {
 					<Button
 						aria-haspopup="menu"
 						aria-label="Open user options"
-						className={`inline-flex w-full items-center rounded-lg py-1.5 text-left transition-colors hover:bg-sidebar-accent ${isCollapsed ? "justify-center px-0" : "justify-between px-2"}`}
+						className={cn(
+							"inline-flex w-full items-center rounded-lg py-1.5 text-left transition-colors hover:bg-sidebar-accent",
+							isCollapsed ? "justify-center px-0" : "justify-between px-2",
+						)}
 						data-sidebar-focusable="true"
 						tabIndex={0}
 						variant="ghost"
@@ -62,11 +66,7 @@ export function UserInfo() {
 				<MenuPortal>
 					<MenuContentPanel
 						align="end"
-						className={
-							isMobile
-								? "w-[min(calc(100vw-1.5rem),var(--radix-dropdown-menu-trigger-width))] min-w-56"
-								: "w-[var(--radix-dropdown-menu-trigger-width)] min-w-56"
-						}
+						className="w-72 min-w-56"
 						collisionPadding={8}
 						side={isMobile ? "top" : "right"}
 						sideOffset={isMobile ? 4 : 6}
