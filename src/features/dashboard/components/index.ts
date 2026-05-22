@@ -1,1 +1,1 @@
-export { DashboardPreview } from './dashboard-preview'
+export { DashboardPreview } from "./dashboard-preview";

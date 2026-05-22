@@ -1,7 +1,7 @@
-import { Sidebar07Page } from './pages'
+import { Sidebar07Page } from "./pages";
 
 function App() {
-  return <Sidebar07Page />
+	return <Sidebar07Page />;
 }
 
-export default App
+export default App;
