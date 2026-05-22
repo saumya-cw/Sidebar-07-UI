@@ -1,29 +1,42 @@
-import { useState } from 'react'
-import { DashboardPreview } from '../../features/dashboard/components'
-import { MobileSidebarDrawer, SidebarPanel } from '../../features/sidebar/components'
-import { SidebarShellHeader, SidebarShellLayout } from './components'
+import { DashboardPreview } from "../../features/dashboard/components";
+import {
+	MobileSidebarDrawer,
+	SidebarPanel,
+	SidebarProvider,
+	useSidebar,
+} from "../../features/sidebar/components";
+import { SidebarShellHeader, SidebarShellLayout } from "./components";
+
+function Sidebar07PageContent() {
+	const { isDesktopCollapsed, isMobileSidebarOpen, closeMobileSidebar } =
+		useSidebar();
+
+	return (
+		<main className="h-screen overflow-hidden bg-page text-foreground">
+			<MobileSidebarDrawer
+				isOpen={isMobileSidebarOpen}
+				onOpenChange={closeMobileSidebar}
+			>
+				<SidebarPanel mode="mobile" />
+			</MobileSidebarDrawer>
+			<SidebarShellLayout
+				content={
+					<>
+						<SidebarShellHeader />
+						<DashboardPreview />
+					</>
+				}
+				isCollapsed={isDesktopCollapsed}
+				sidebar={<SidebarPanel />}
+			/>
+		</main>
+	);
+}
 
 export function Sidebar07Page() {
-  const [isCollapsed, setIsCollapsed] = useState(false)
-  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false)
-  return (
-    <main className="h-screen overflow-hidden bg-zinc-100 text-zinc-950">
-      <MobileSidebarDrawer isOpen={isMobileSidebarOpen} onOpenChange={setIsMobileSidebarOpen}>
-        <SidebarPanel isMobile />
-      </MobileSidebarDrawer>
-      <SidebarShellLayout
-        isCollapsed={isCollapsed}
-        sidebar={<SidebarPanel isCollapsed={isCollapsed} />}
-        content={
-          <>
-            <SidebarShellHeader
-              onOpenMobileSidebar={() => setIsMobileSidebarOpen(true)}
-              onToggleDesktopSidebar={() => setIsCollapsed((value) => !value)}
-            />
-            <DashboardPreview />
-          </>
-        }
-      />
-    </main>
-  )
+	return (
+		<SidebarProvider>
+			<Sidebar07PageContent />
+		</SidebarProvider>
+	);
 }
