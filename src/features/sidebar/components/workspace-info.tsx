@@ -1,7 +1,7 @@
-import { Check, ChevronsUpDown } from 'lucide-react'
-import { useState } from 'react'
-import { Button } from '../../../shared/components/ui'
-import { workspaceMenu, workspaces } from '../data/sidebar-navigation-data'
+import { Check, ChevronsUpDown } from "lucide-react";
+import { useState } from "react";
+import { Button } from "../../../shared/components/ui";
+import { workspaceMenu, workspaces } from "../data/sidebar-navigation-data";
 import {
   MenuActionItem,
   MenuContentPanel,
@@ -11,15 +11,15 @@ import {
   MenuSectionLabel,
   MenuTrigger,
   SidebarSection,
-} from './primitives'
+} from "./primitives";
 
-type WorkspaceInfoProps = { isCollapsed?: boolean }
+type WorkspaceInfoProps = { isCollapsed?: boolean };
 
 type WorkspaceDropdownContentProps = {
-  isMobile: boolean
-  activeWorkspaceId: string
-  onSelectWorkspace: (workspaceId: string) => void
-}
+  isMobile: boolean;
+  activeWorkspaceId: string;
+  onSelectWorkspace: (workspaceId: string) => void;
+};
 
 function WorkspaceMenuContent({
   isMobile,
@@ -29,14 +29,14 @@ function WorkspaceMenuContent({
   return (
     <MenuPortal>
       <MenuContentPanel
-        side={isMobile ? 'bottom' : 'right'}
+        side={isMobile ? "bottom" : "right"}
         align="start"
         sideOffset={isMobile ? 4 : 6}
         collisionPadding={8}
         className={
           isMobile
-            ? 'w-[min(calc(100vw-1.5rem),var(--radix-dropdown-menu-trigger-width))] min-w-56'
-            : 'w-[var(--radix-dropdown-menu-trigger-width)] min-w-56'
+            ? "w-[min(calc(100vw-1.5rem),var(--radix-dropdown-menu-trigger-width))] min-w-56"
+            : "w-[var(--radix-dropdown-menu-trigger-width)] min-w-56"
         }
       >
         <MenuSectionLabel>{workspaceMenu.label}</MenuSectionLabel>
@@ -63,24 +63,32 @@ function WorkspaceMenuContent({
         </MenuActionItem>
       </MenuContentPanel>
     </MenuPortal>
-  )
+  );
 }
 
 export function WorkspaceInfo({
   isCollapsed = false,
   isMobile = false,
 }: WorkspaceInfoProps & { isMobile?: boolean }) {
-  const [activeWorkspaceId, setActiveWorkspaceId] = useState(workspaces[0]?.id ?? '')
-  const [isWorkspaceMenuOpen, setIsWorkspaceMenuOpen] = useState(false)
-  const activeWorkspace = workspaces.find((workspace) => workspace.id === activeWorkspaceId)
+  const [activeWorkspaceId, setActiveWorkspaceId] = useState(
+    workspaces[0]?.id ?? "",
+  );
+  const [isWorkspaceMenuOpen, setIsWorkspaceMenuOpen] = useState(false);
+  const activeWorkspace = workspaces.find(
+    (workspace) => workspace.id === activeWorkspaceId,
+  );
 
   if (!activeWorkspace) {
-    return null
+    return null;
   }
 
   return (
     <SidebarSection aria-label="Workspace info" className="pt-2">
-      <MenuRoot open={isWorkspaceMenuOpen} onOpenChange={setIsWorkspaceMenuOpen} modal={false}>
+      <MenuRoot
+        open={isWorkspaceMenuOpen}
+        onOpenChange={setIsWorkspaceMenuOpen}
+        modal={false}
+      >
         <MenuTrigger asChild>
           <Button
             variant="ghost"
@@ -89,7 +97,7 @@ export function WorkspaceInfo({
             aria-expanded={isWorkspaceMenuOpen}
             tabIndex={0}
             data-sidebar-focusable="true"
-            className={`inline-flex h-12 w-full items-center rounded-lg text-left text-zinc-700 ${isCollapsed ? 'justify-center px-0' : 'justify-between px-2'}`}
+            className={`inline-flex h-12 w-full items-center rounded-lg text-left text-zinc-700 ${isCollapsed ? "justify-center px-0" : "justify-between px-2"}`}
           >
             <span className="inline-flex items-center gap-2">
               <span className="inline-flex size-8 items-center justify-center rounded-xl bg-zinc-900 text-white">
@@ -97,13 +105,20 @@ export function WorkspaceInfo({
               </span>
               {!isCollapsed ? (
                 <span className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-medium text-zinc-900">{activeWorkspace.name}</span>
-                  <span className="truncate text-xs text-zinc-500">{activeWorkspace.plan}</span>
+                  <span className="truncate font-medium text-zinc-900">
+                    {activeWorkspace.name}
+                  </span>
+                  <span className="truncate text-xs text-zinc-500">
+                    {activeWorkspace.plan}
+                  </span>
                 </span>
               ) : null}
             </span>
             {!isCollapsed ? (
-              <ChevronsUpDown aria-hidden="true" className="size-4 text-zinc-400" />
+              <ChevronsUpDown
+                aria-hidden="true"
+                className="size-4 text-zinc-400"
+              />
             ) : null}
           </Button>
         </MenuTrigger>
@@ -114,5 +129,5 @@ export function WorkspaceInfo({
         />
       </MenuRoot>
     </SidebarSection>
-  )
+  );
 }

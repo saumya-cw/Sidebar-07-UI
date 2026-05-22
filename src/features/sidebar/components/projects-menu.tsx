@@ -1,6 +1,6 @@
-import { Folder, Forward, MoreHorizontal, Trash2 } from 'lucide-react'
-import { Button } from '../../../shared/components/ui'
-import { projectNavigationItems } from '../data/sidebar-navigation-data'
+import { Folder, Forward, MoreHorizontal, Trash2 } from "lucide-react";
+import { Button } from "../../../shared/components/ui";
+import { projectNavigationItems } from "../data/sidebar-navigation-data";
 import {
   MenuActionItem,
   MenuContentPanel,
@@ -13,16 +13,16 @@ import {
   SidebarRowButton,
   SidebarSection,
   SidebarSectionLabel,
-} from './primitives'
+} from "./primitives";
 
 export function ProjectsMenu({
   isCollapsed = false,
   isMobile = false,
 }: {
-  isCollapsed?: boolean
-  isMobile?: boolean
+  isCollapsed?: boolean;
+  isMobile?: boolean;
 }) {
-  if (isCollapsed) return null
+  if (isCollapsed) return null;
   return (
     <SidebarSection aria-label="Projects menu" className="pt-5">
       <SidebarSectionLabel className="pt-0">Projects</SidebarSectionLabel>
@@ -47,15 +47,15 @@ export function ProjectsMenu({
                       aria-haspopup="menu"
                       tabIndex={0}
                       data-sidebar-focusable="true"
-                      className={`inline-flex size-8 shrink-0 items-center justify-center rounded-md text-zinc-700 transition-opacity hover:bg-zinc-100 focus:opacity-100 focus:outline-none focus-visible:opacity-100 data-[state=open]:opacity-100 ${isMobile ? 'opacity-100' : 'opacity-0 group-hover:opacity-100 group-focus-within:opacity-100'}`}
+                      className={`inline-flex size-8 shrink-0 items-center justify-center rounded-md text-zinc-700 transition-opacity hover:bg-zinc-100 focus:opacity-100 focus:outline-none focus-visible:opacity-100 data-[state=open]:opacity-100 ${isMobile ? "opacity-100" : "opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"}`}
                     >
                       <MoreHorizontal className="size-4" />
                     </Button>
                   </MenuTrigger>
                   <MenuPortal>
                     <MenuContentPanel
-                      side={isMobile ? 'bottom' : 'right'}
-                      align={isMobile ? 'end' : 'start'}
+                      side={isMobile ? "bottom" : "right"}
+                      align={isMobile ? "end" : "start"}
                       sideOffset={4}
                       collisionPadding={8}
                       className="min-w-44"
@@ -88,5 +88,5 @@ export function ProjectsMenu({
         </SidebarList>
       </nav>
     </SidebarSection>
-  )
+  );
 }
