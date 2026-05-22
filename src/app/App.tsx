@@ -1,7 +1,7 @@
-import { SidebarPage } from '../features/sidebar/components/SidebarPage'
+import { Sidebar07Page } from "./pages";
 
 function App() {
-  return <SidebarPage />
+	return <Sidebar07Page />;
 }
 
-export default App
+export default App;
