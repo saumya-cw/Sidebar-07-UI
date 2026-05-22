@@ -9,7 +9,7 @@ export function Sidebar07Page() {
   return (
     <main className="h-screen overflow-hidden bg-zinc-100 text-zinc-950">
       <MobileSidebarDrawer isOpen={isMobileSidebarOpen} onOpenChange={setIsMobileSidebarOpen}>
-        <SidebarPanel />
+        <SidebarPanel isMobile />
       </MobileSidebarDrawer>
       <SidebarShellLayout
         isCollapsed={isCollapsed}

@@ -10,7 +10,13 @@ import {
   MenuTrigger,
 } from './primitives'
 
-export function UserInfo({ isCollapsed = false }: { isCollapsed?: boolean }) {
+export function UserInfo({
+  isCollapsed = false,
+  isMobile = false,
+}: {
+  isCollapsed?: boolean
+  isMobile?: boolean
+}) {
   return (
     <footer className="border-t border-zinc-200 p-3">
       <MenuRoot>
@@ -41,10 +47,15 @@ export function UserInfo({ isCollapsed = false }: { isCollapsed?: boolean }) {
         </MenuTrigger>
         <MenuPortal>
           <MenuContentPanel
-            side="right"
+            side={isMobile ? 'top' : 'right'}
             align="end"
-            sideOffset={6}
-            className="w-[var(--radix-dropdown-menu-trigger-width)] min-w-56"
+            sideOffset={isMobile ? 4 : 6}
+            collisionPadding={8}
+            className={
+              isMobile
+                ? 'w-[min(calc(100vw-1.5rem),var(--radix-dropdown-menu-trigger-width))] min-w-56'
+                : 'w-[var(--radix-dropdown-menu-trigger-width)] min-w-56'
+            }
           >
             <MenuActionItem>
               <Sparkles className="size-4 text-zinc-600" />

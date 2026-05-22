@@ -22,7 +22,7 @@ function PrimarySubmenu({
 }) {
   if (isCollapsed) return null
   return (
-    <SidebarList className="mt-0.5 pl-7">
+    <SidebarList className="mt-0.5 ml-3.5 border-l border-zinc-200 pl-3.5">
       {items.map((title) => (
         <SidebarListItem key={title}>
           <SidebarRowButton compact className="justify-start">
@@ -41,24 +41,30 @@ function PrimaryGroupRow({
   group: PrimaryNavigationGroup
   isCollapsed: boolean
 }) {
+  const triggerButton = (
+    <SidebarRowButton
+      className={isCollapsed ? 'group justify-center px-0' : 'group'}
+      aria-label={group.title}
+    >
+      <span className="inline-flex items-center gap-2">
+        <group.icon className="size-4 text-zinc-900" />
+        {!isCollapsed ? <span className="text-zinc-900">{group.title}</span> : null}
+      </span>
+      {!isCollapsed ? (
+        <ChevronRight className="size-4 text-zinc-900 transition-transform group-data-[state=open]:rotate-90" />
+      ) : null}
+    </SidebarRowButton>
+  )
+
   return (
     <Collapsible.Root defaultOpen={group.defaultOpen}>
-      <Collapsible.Trigger asChild>
-        <SidebarTooltip content={group.title} disabled={!isCollapsed}>
-          <SidebarRowButton
-            className={isCollapsed ? 'group justify-center px-0' : 'group'}
-            aria-label={group.title}
-          >
-            <span className="inline-flex items-center gap-2">
-              <group.icon className="size-4 text-zinc-900" />
-              {!isCollapsed ? <span className="text-zinc-900">{group.title}</span> : null}
-            </span>
-            {!isCollapsed ? (
-              <ChevronRight className="size-4 text-zinc-900 transition-transform group-data-[state=open]:rotate-90" />
-            ) : null}
-          </SidebarRowButton>
+      {isCollapsed ? (
+        <SidebarTooltip content={group.title}>
+          <Collapsible.Trigger asChild>{triggerButton}</Collapsible.Trigger>
         </SidebarTooltip>
-      </Collapsible.Trigger>
+      ) : (
+        <Collapsible.Trigger asChild>{triggerButton}</Collapsible.Trigger>
+      )}
       {group.children ? (
         <Collapsible.Content>
           <PrimarySubmenu items={group.children} isCollapsed={isCollapsed} />

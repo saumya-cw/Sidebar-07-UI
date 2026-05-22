@@ -6,7 +6,6 @@ import {
   CircleDashed,
   GalleryVerticalEnd,
   Map as MapIcon,
-  MoreHorizontal,
   Plus,
   Settings2,
   SquareTerminal,
@@ -74,7 +73,6 @@ export const projectNavigationItems: readonly ProjectNavigationItem[] = [
   { id: 'design-engineering', title: 'Design Engineering', icon: ChartNoAxesCombined },
   { id: 'sales-marketing', title: 'Sales & Marketing', icon: CircleDashed },
   { id: 'travel', title: 'Travel', icon: MapIcon },
-  { id: 'more', title: 'More', icon: MoreHorizontal },
 ]
 
 export const sidebarUser: SidebarUser = {
